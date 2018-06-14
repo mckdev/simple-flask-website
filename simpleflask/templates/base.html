@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    {% include 'header_scripts.html' %}
+
+    <title>
+        {% if page_title %}
+            {{ page_title }} - {{ config.SITE_NAME }}
+        {% else %}
+            {{ config.SITE_NAME }}
+        {% endif %}
+    </title>
+  </head>
+  <body>
+    <div class="container">
+
+      <h1 class="h3">Simple Flask Website</h1>
+
+      <div class="nav mb-5">{% include 'nav.html' %}</div>
+
+      
+      {% for message in get_flashed_messages() %}
+        <div class="flash">{{ message }}</div>
+      {% endfor %}
+
+      {% block content %}
+      {% endblock content %}
+
+      {% include 'footer_scripts.html' %}
+    </div>
+  </body>
+</html>

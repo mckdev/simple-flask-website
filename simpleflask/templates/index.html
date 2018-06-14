@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% set active_page = 'index' %}
+
+{% block content %}
+
+{% if entries %}
+    <table class="table">
+        <tbody>
+            <th scope="col">Title</th>
+            <th scope="col">Body</th>
+            <th scope="col">Author</th>
+            <th scope="col">Created</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+            {% for entry in entries %}
+                <tr>
+                    <td>{{ entry.title }}</td>
+                    <td>{{ entry.body }}</td>
+                    <td>{{ entry.author }}</td>
+                    <td>{{ entry.created.strftime('%Y-%m-%d') }}</td>
+                    <td><a class="btn btn-secondary btn-sm" href="{{ url_for('edit', id=entry['id']) }}"><i class="fas fa-pencil-alt"></i></a></td>
+                    <td>  
+                        <form action="{{ url_for('delete', id=entry['id']) }}" method="post">
+                            <button class="btn btn-danger btn-sm" type="submit" onclick="return confirm('Are you sure?');"><i class="fas fa-trash-alt"></i></button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+There is nothing to show!
+{% endif %}
+
+{% endblock content %}

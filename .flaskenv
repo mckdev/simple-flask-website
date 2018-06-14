@@ -1,0 +1,2 @@
+FLASK_APP=simpleflask
+FLASK_ENV=development

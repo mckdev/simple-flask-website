@@ -1,0 +1,10 @@
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link {% if active_page == 'index' %}active{% endif %}" href="{{ url_for('index') }}">Index</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {% if active_page == 'add' %}active{% endif %}" href="{{ url_for('add') }}">
+        <i class="fas fa-plus"></i>
+        </a>
+    </li>
+</ul>
